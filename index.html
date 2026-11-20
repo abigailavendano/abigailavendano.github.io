@@ -6,18 +6,18 @@
 <title>Abigail Avendaño</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Portafolio de Abigail Avendaño: aplicaciones web accesibles para votar, identificarse, encuestar y aprender.">
-<meta name="theme-color" content="#05070F">
+<meta name="theme-color" content="#0A1033">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Sora:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap">
 <style>
-/* Layout: interfaz de control nocturna. Hero con cuadrícula en perspectiva animada + terminal; proyectos como paneles HUD con esquinas; diseño oscuro único a propósito. */
+/* Layout: noche azul con flores luminosas en las esquinas y pétalos cayendo; título de máquina de escribir centrado; contenido en marcos dobles de línea fina con etiqueta. Diseño oscuro único a propósito. */
 :root{
-  --bg:#05070F; --bg-2:#0A0F1F; --panel:rgba(14,22,44,.72); --ink:#E6F1FF; --muted:#8A9BBD; --line:rgba(120,200,255,.16);
-  --cyan:#3CF2FF; --violet:#9B6BFF; --pink:#FF4FD8; --lime:#7CFFB2;
-  --f-display:"Chakra Petch", "Segoe UI", system-ui, sans-serif;
-  --f-body:"Sora", "Segoe UI", system-ui, sans-serif;
-  --f-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --bg:#0A1033; --bg-2:#111A4E; --bg-3:#1B2870;
+  --panel:rgba(9,14,46,.78); --ink:#F3F5FF; --muted:#AEB8E8;
+  --peri:#9DB0FF; --line:rgba(225,232,255,.55); --line-soft:rgba(225,232,255,.18); --leaf:#3F56CF;
+  --f-type:"Courier Prime", "Courier New", ui-monospace, monospace;
+  --f-body:"Raleway", "Segoe UI", system-ui, sans-serif;
   --scale:1;
   color-scheme:dark;
 }
@@ -26,248 +26,208 @@ body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
 html{font-size:calc(16px * var(--scale)); scroll-behavior:smooth; background:var(--bg)}
-body{background:var(--bg); color:var(--ink); font-family:var(--f-body); font-weight:300; font-size:1.0625rem; line-height:1.65; overflow-x:hidden}
-body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:50;
-  background:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px)}
+body{background:radial-gradient(80rem 50rem at 50% -10%, var(--bg-3), transparent 70%), linear-gradient(180deg, var(--bg-2), var(--bg) 40%); background-color:var(--bg); color:var(--ink); font-family:var(--f-body); font-size:1.0625rem; line-height:1.7; overflow-x:hidden}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *,*::before,*::after{animation:none!important; transition:none!important}}
-.wrap{max-width:74rem; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px))}
+#sky{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
+main,header,footer{position:relative; z-index:1}
+.wrap{max-width:72rem; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px))}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--cyan); outline-offset:3px}
-h1,h2,h3{font-family:var(--f-display); text-wrap:balance; line-height:1.05; margin:0; font-weight:700}
+:focus-visible{outline:2px solid #fff; outline-offset:3px; border-radius:4px}
+h1,h2,h3{font-family:var(--f-type); font-weight:400; text-wrap:balance; line-height:1.15; margin:0}
 p{margin:0}
-.label{font-family:var(--f-mono); font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; color:var(--cyan)}
-.label::before{content:"// "; color:var(--muted)}
-.grad{background:linear-gradient(90deg, var(--cyan), var(--violet) 55%, var(--pink)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.glow{text-shadow:0 0 12px rgba(255,255,255,.55), 0 0 32px rgba(157,176,255,.45)}
+.label{font-family:var(--f-body); font-size:.74rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--peri)}
 
 /* barra superior */
-.top-band{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; background:rgba(5,7,15,.75); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--line)}
-body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:41; background:var(--bg)}
-.top{display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding-block:.9rem}
-.brand{font-family:var(--f-display); font-weight:700; letter-spacing:.06em; text-decoration:none; display:flex; align-items:center; gap:.6rem}
-.dot{width:.55rem; height:.55rem; border-radius:50%; background:var(--lime); box-shadow:0 0 10px var(--lime); animation:pulse 2s infinite}
-@keyframes pulse{50%{opacity:.35}}
-.nav{display:flex; gap:1.4rem; flex-wrap:wrap; font-family:var(--f-mono); font-size:.8rem; text-transform:uppercase; letter-spacing:.1em}
-.nav a{text-decoration:none; color:var(--muted)} .nav a:hover{color:var(--cyan)}
+.top{display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding-block:1.1rem}
+.brand{font-family:var(--f-type); font-size:1.1rem; text-decoration:none; display:flex; align-items:center; gap:.55rem}
+.brand svg{width:1.1rem; height:1.1rem}
+.nav{display:flex; gap:1.5rem; flex-wrap:wrap; font-size:.88rem; letter-spacing:.06em}
+.nav a{text-decoration:none; color:var(--muted)} .nav a:hover{color:#fff; text-shadow:0 0 10px rgba(255,255,255,.7)}
 
 /* hero */
-.hero-band{position:relative; overflow:hidden; border-bottom:1px solid var(--line)}
-#grid{position:absolute; inset:0; width:100%; height:100%; z-index:0}
-.hero-band::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
-  background:radial-gradient(60rem 30rem at 20% 10%, rgba(155,107,255,.22), transparent 60%), radial-gradient(40rem 26rem at 90% 70%, rgba(60,242,255,.14), transparent 60%)}
-.hero{position:relative; z-index:2; display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:3rem; align-items:center; padding-block:4rem 5rem}
-.hero h1{font-size:clamp(2.6rem, 7vw, 5.6rem); letter-spacing:-.01em; text-transform:uppercase; margin-top:1rem}
-.hero h1 .sub{display:block; font-size:.42em; letter-spacing:.04em; color:var(--muted); font-weight:500; margin-top:.6rem; text-transform:none}
-.term{margin-top:1.8rem; font-family:var(--f-mono); font-size:.95rem; background:rgba(5,7,15,.7); border:1px solid var(--line); border-radius:10px; padding:1rem 1.1rem; max-width:36rem}
-.term .p{color:var(--lime)} .term .c{color:var(--muted)}
-.term .out{color:var(--ink); display:block; margin-top:.35rem}
-.caret{display:inline-block; width:.55em; height:1.1em; background:var(--cyan); vertical-align:-.2em; animation:blink 1s steps(1) infinite; margin-left:2px}
-@keyframes blink{50%{opacity:0}}
-.lede{margin-top:1.4rem; max-width:36rem; font-size:1.12rem; color:var(--muted)}
+.hero{position:relative; overflow:hidden; min-height:34rem; display:grid; place-items:center; text-align:center; padding-block:4rem 5rem}
+.bloom{position:absolute; pointer-events:none; width:min(30rem,55vw); height:min(24rem,44vw)}
+.bloom.tr{top:-2rem; right:-2rem}
+.bloom.bl{bottom:-1rem; left:-2rem}
+.hero-in{position:relative; display:grid; justify-items:center; gap:1.1rem; max-width:44rem}
+.hero h1{font-size:clamp(2.6rem, 7.5vw, 5.2rem); letter-spacing:.02em}
+.hello{font-size:1.15rem; color:var(--muted); letter-spacing:.06em}
+.lede{color:var(--muted); max-width:36rem; margin-top:.4rem}
 .lede strong{color:var(--ink); font-weight:600}
-.cta{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:2rem}
-.btn{display:inline-flex; align-items:center; gap:.5rem; font-family:var(--f-mono); font-weight:600; font-size:.88rem; text-transform:uppercase; letter-spacing:.1em; text-decoration:none; padding:.9rem 1.3rem; border:1px solid var(--cyan); color:var(--cyan); background:rgba(60,242,255,.05);
-  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px); transition:background .2s, box-shadow .2s, color .2s}
-.btn:hover{background:var(--cyan); color:var(--bg); box-shadow:0 0 24px rgba(60,242,255,.6)}
-.btn.primary{background:linear-gradient(90deg,var(--cyan),var(--violet)); color:var(--bg); border-color:transparent}
-.btn.primary:hover{box-shadow:0 0 30px rgba(155,107,255,.7)}
-.sizer{margin-top:2rem; display:flex; align-items:center; gap:.7rem; flex-wrap:wrap}
-.sizer button{font-family:var(--f-display); font-weight:700; font-size:1.05rem; width:3rem; height:3rem; border:1px solid var(--line); background:var(--panel); color:var(--ink); cursor:pointer; border-radius:8px; transition:border-color .2s, box-shadow .2s}
-.sizer button:hover{border-color:var(--cyan); box-shadow:0 0 14px rgba(60,242,255,.4)}
-.sizer span{font-size:.88rem; color:var(--muted); max-width:22rem}
+.cta{display:flex; gap:.8rem; flex-wrap:wrap; justify-content:center; margin-top:.8rem}
+.btn{display:inline-flex; align-items:center; gap:.5rem; font-family:var(--f-type); font-size:1rem; text-decoration:none; padding:.75rem 1.4rem; border:1px solid var(--line); border-radius:6px; background:rgba(10,16,51,.5); box-shadow:0 0 0 3px rgba(10,16,51,.6), 0 0 0 4px var(--line-soft); transition:box-shadow .25s, background .25s}
+.btn:hover{background:rgba(157,176,255,.14); box-shadow:0 0 0 3px rgba(10,16,51,.6), 0 0 0 4px var(--line), 0 0 22px rgba(157,176,255,.5)}
+.btn.solid{background:#fff; color:var(--bg); border-color:#fff}
+.btn.solid:hover{background:#fff}
+.sizer{display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; justify-content:center; margin-top:.6rem}
+.sizer button{font-family:var(--f-type); font-size:1.05rem; width:2.9rem; height:2.9rem; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--ink); cursor:pointer}
+.sizer button:hover{box-shadow:0 0 14px rgba(157,176,255,.6)}
+.sizer span{font-size:.86rem; color:var(--muted); max-width:20rem; text-align:left}
 
-/* teléfono holográfico */
-.phone-wrap{justify-self:center; position:relative; width:min(19rem,100%); max-width:100%}
-.phone-wrap::before{content:""; position:absolute; inset:-14%; background:radial-gradient(closest-side, rgba(60,242,255,.28), transparent); filter:blur(10px); z-index:-1}
-.phone{aspect-ratio:9/18; max-width:100%; border:1px solid rgba(60,242,255,.5); border-radius:2.4rem; padding:.6rem; background:linear-gradient(160deg, rgba(60,242,255,.12), rgba(155,107,255,.10)); box-shadow:0 0 40px rgba(60,242,255,.25), inset 0 0 30px rgba(60,242,255,.08); animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-10px)}}
-.screen{height:100%; background:rgba(6,10,22,.92); border-radius:1.9rem; padding:1.5rem 1.15rem; display:flex; flex-direction:column; gap:.9rem; overflow:hidden; border:1px solid var(--line)}
-.screen .bar{display:flex; justify-content:space-between; font-family:var(--f-mono); font-size:.66rem; color:var(--muted)}
-.screen .bar b{color:var(--lime); font-weight:400}
-.screen h3{font-size:1.3rem}
-.screen .q{font-size:.92rem; color:var(--muted)}
+/* píldoras (como las alertas de la transmisión) */
+.pills{display:flex; flex-wrap:wrap; gap:.7rem; justify-content:center; padding-block:0 1rem}
+.pill{display:flex; align-items:center; gap:.7rem; padding:.4rem 1.1rem .4rem .45rem; border:1px solid var(--line); border-radius:999px; background:var(--panel); font-size:.92rem; box-shadow:0 0 18px rgba(157,176,255,.18)}
+.pill i{display:grid; place-items:center; width:1.7rem; height:1.7rem; border-radius:50%; background:#fff; color:var(--bg); font-style:normal; font-size:.8rem}
+.pill b{font-family:var(--f-type); font-size:1.15rem; font-weight:700}
+
+/* marcos dobles */
+.frame{position:relative; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:1.7rem; min-width:0;
+  box-shadow:0 0 0 5px rgba(10,16,51,.55), 0 0 0 6px var(--line-soft), 0 0 30px rgba(157,176,255,.12);
+  backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); transition:box-shadow .3s, transform .3s}
+.frame:hover{transform:translateY(-3px); box-shadow:0 0 0 5px rgba(10,16,51,.55), 0 0 0 6px var(--line), 0 0 36px rgba(157,176,255,.35)}
+.frame[data-tab]::before{content:attr(data-tab); position:absolute; top:-.62rem; left:50%; transform:translateX(-50%); padding:0 .8rem; background:var(--bg); font-size:.66rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:var(--ink); white-space:nowrap; border-radius:3px}
+
+section{padding-block:4.5rem}
+.sec-head{display:grid; justify-items:center; text-align:center; gap:.6rem; margin-bottom:3rem}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3.1rem)}
+.sec-head p{max-width:32rem; color:var(--muted)}
+
+/* escena principal: pantalla + "chat" */
+.stage{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,19rem); gap:2rem; align-items:stretch}
+.stage .main{display:grid; gap:1.1rem; align-content:start; padding:2.2rem}
+.stage .main h3{font-size:clamp(2rem,4.5vw,3rem)}
+.vote-panel{display:flex; flex-direction:column; gap:.9rem}
+.vote-panel .bar{display:flex; justify-content:space-between; font-size:.72rem; letter-spacing:.14em; color:var(--muted); text-transform:uppercase}
+.vote-panel h4{font-family:var(--f-type); font-weight:400; font-size:1.3rem; margin:0; line-height:1.25}
+.vote-panel .q{font-size:.92rem; color:var(--muted)}
 .vote{display:grid; gap:.55rem; margin-top:auto}
-.vote button{font:600 1.05rem var(--f-body); padding:.95rem 1rem; border-radius:12px; border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--ink); cursor:pointer; text-align:left; transition:all .2s}
-.vote button:hover{border-color:var(--cyan)}
-.vote button[aria-pressed="true"]{border-color:var(--cyan); background:rgba(60,242,255,.16); box-shadow:0 0 18px rgba(60,242,255,.35)}
-.receipt{font-family:var(--f-mono); font-size:.7rem; color:var(--lime); min-height:1.2em}
+.vote button{font:500 1.05rem var(--f-body); padding:.9rem 1rem; border-radius:8px; border:1px solid var(--line-soft); background:rgba(255,255,255,.04); color:var(--ink); cursor:pointer; text-align:left; transition:all .2s}
+.vote button:hover{border-color:var(--line)}
+.vote button[aria-pressed="true"]{background:#fff; color:var(--bg); border-color:#fff; box-shadow:0 0 20px rgba(255,255,255,.45)}
+.receipt{font-family:var(--f-type); font-size:.8rem; color:#fff; min-height:1.3em}
 
-/* métricas */
-.stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-bottom:1px solid var(--line)}
-.stat{padding:1.6rem 1.2rem; border-right:1px solid var(--line); min-width:0}
-.stat:last-child{border-right:0}
-.stat b{display:block; font-family:var(--f-display); font-size:2.4rem; line-height:1; font-variant-numeric:tabular-nums; color:var(--cyan); text-shadow:0 0 18px rgba(60,242,255,.5)}
-.stat span{display:block; margin-top:.5rem; color:var(--muted); font-size:.92rem}
-
-/* secciones */
-section{padding-block:5rem}
-.sec-head{display:flex; justify-content:space-between; align-items:end; gap:1.5rem; flex-wrap:wrap; margin-bottom:2.6rem}
-.sec-head h2{font-size:clamp(2rem,4.5vw,3.3rem); text-transform:uppercase; margin-top:.5rem}
-.sec-head p{max-width:30rem; color:var(--muted)}
-
-/* paneles HUD */
-.panel{position:relative; background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:1.7rem; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); min-width:0;
-  --c:var(--cyan); transition:border-color .25s, box-shadow .25s, transform .25s}
-.panel::before,.panel::after{content:""; position:absolute; width:16px; height:16px; border:2px solid var(--c); pointer-events:none}
-.panel::before{top:-1px; left:-1px; border-right:0; border-bottom:0}
-.panel::after{bottom:-1px; right:-1px; border-left:0; border-top:0}
-.panel:hover{border-color:color-mix(in srgb, var(--c) 55%, transparent); box-shadow:0 0 30px color-mix(in srgb, var(--c) 22%, transparent); transform:translateY(-3px)}
-
-.grid{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:1.3rem}
+/* proyectos */
+.grid{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:2rem 1.6rem; margin-top:3.5rem}
 .card{grid-column:span 2; display:flex; flex-direction:column; gap:1rem}
 .card.wide{grid-column:span 3}
-.card.feature{grid-column:span 6; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:2.2rem;
-  background:linear-gradient(135deg, rgba(60,242,255,.10), rgba(155,107,255,.12) 50%, rgba(255,79,216,.08)); border-color:rgba(60,242,255,.35)}
-.card.feature h3{font-size:clamp(2rem,4.5vw,3rem)}
-.card h3{font-size:1.55rem}
-.card .status{display:flex; justify-content:space-between; gap:.6rem; flex-wrap:wrap; align-items:center}
-.online{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--lime); display:flex; align-items:center; gap:.4rem}
-.online::before{content:""; width:.45rem; height:.45rem; border-radius:50%; background:var(--lime); box-shadow:0 0 8px var(--lime)}
+.card h3{font-size:1.5rem}
 .desc{color:var(--muted)}
-.feats{list-style:none; margin:0; padding:0; display:grid; gap:.55rem}
+.feats{list-style:none; margin:0; padding:0; display:grid; gap:.5rem}
 .feats li{display:grid; grid-template-columns:1.2rem minmax(0,1fr); gap:.5rem}
-.feats li::before{content:"▸"; color:var(--c, var(--cyan))}
+.feats li::before{content:"✿"; color:#fff; text-shadow:0 0 8px rgba(255,255,255,.8); font-size:.85rem; line-height:1.9}
 .chips{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:auto}
-.chip{font-family:var(--f-mono); font-size:.7rem; padding:.28rem .6rem; border:1px solid var(--line); color:var(--ink); background:rgba(255,255,255,.03); border-radius:3px}
-.links{display:flex; gap:1.2rem; flex-wrap:wrap; font-family:var(--f-mono); font-size:.82rem; text-transform:uppercase; letter-spacing:.08em}
-.links a{text-decoration:none; color:var(--c, var(--cyan)); border-bottom:1px solid currentColor; padding-bottom:2px}
-.links a::after{content:" ↗"}
-.links a:hover{text-shadow:0 0 10px currentColor}
-.c-violet{--c:var(--violet)} .c-pink{--c:var(--pink)} .c-lime{--c:var(--lime)}
+.chip{font-size:.74rem; font-weight:500; padding:.22rem .7rem; border:1px solid var(--line-soft); border-radius:999px; color:var(--ink); background:rgba(157,176,255,.08)}
+.links{display:flex; gap:1.3rem; flex-wrap:wrap; font-family:var(--f-type); font-size:.95rem}
+.links a{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:1px}
+.links a:hover{text-shadow:0 0 10px rgba(255,255,255,.8); border-color:#fff}
 
-/* principios */
-.principles{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.3rem}
-.pr{display:grid; gap:.7rem; align-content:start}
-.pr .idx{font-family:var(--f-mono); font-size:.75rem; color:var(--c)}
-.pr h3{font-size:1.25rem}
-.pr p{color:var(--muted); font-size:.98rem}
-.pr code{font-family:var(--f-mono); font-size:.82em; color:var(--cyan)}
-
-/* stack */
-.stack{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.3rem}
-.stack h3{font-size:1.1rem; margin-bottom:1rem; text-transform:uppercase; letter-spacing:.06em}
+/* principios y stack */
+.principles{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:2rem 1.6rem}
+.pr{display:grid; gap:.7rem; align-content:start; text-align:center; padding-top:2rem}
+.pr .ico{font-size:1.5rem; line-height:1}
+.pr h3{font-size:1.2rem}
+.pr p{color:var(--muted); font-size:.96rem}
+.pr code{font-family:var(--f-type); color:#fff}
+.stack{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2rem 1.6rem}
+.stack .frame{padding-top:2rem}
 
 /* contacto */
-.contact{position:relative; overflow:hidden; border-top:1px solid var(--line); padding-block:6rem;
-  background:radial-gradient(50rem 24rem at 50% 120%, rgba(155,107,255,.35), transparent 70%), var(--bg-2)}
-.contact .inner{text-align:center; display:grid; justify-items:center; gap:1.2rem}
-.contact h2{font-size:clamp(2.2rem,6vw,4.6rem); text-transform:uppercase; max-width:52rem}
-.contact p{max-width:34rem; font-size:1.12rem; color:var(--muted)}
-footer{padding-block:2rem; color:var(--muted); font-family:var(--f-mono); font-size:.78rem; border-top:1px solid var(--line)}
+.contact{position:relative; overflow:hidden; padding-block:7rem 6rem; text-align:center}
+.contact .inner{position:relative; display:grid; justify-items:center; gap:1.1rem}
+.contact h2{font-size:clamp(2.1rem,5.5vw,4rem); max-width:46rem}
+.contact p{max-width:32rem; color:var(--muted)}
+footer{padding-block:2rem; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line-soft)}
 footer .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+footer .t{font-family:var(--f-type)}
 
 @media (max-width: 900px){
-  .hero{grid-template-columns:minmax(0,1fr); padding-block:2.5rem 4rem}
-  .phone-wrap{width:min(16rem,100%)}
+  .stage{grid-template-columns:minmax(0,1fr)}
   .card,.card.wide{grid-column:span 6}
-  .card.feature{grid-template-columns:minmax(0,1fr)}
   .principles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .stack{grid-template-columns:minmax(0,1fr)}
+  .hero{min-height:0; padding-block:5rem 6rem}
 }
 @media (max-width: 560px){
   .principles{grid-template-columns:minmax(0,1fr)}
   .nav{display:none}
-  .stats{grid-template-columns:minmax(0,1fr)}
-  .stat{border-right:0; border-bottom:1px solid var(--line)} .stat:last-child{border-bottom:0}
+  .stage .main{padding:1.6rem}
+  .bloom{width:70vw; height:56vw}
 }
 </style>
 </head>
 <body>
 
-<div class="top-band">
-  <header class="wrap top">
-    <a class="brand" href="#inicio"><span class="dot" aria-hidden="true"></span>ABIGAIL.AVENDAÑO</a>
-    <nav class="nav" aria-label="Secciones">
-      <a href="#proyectos">Proyectos</a>
-      <a href="#como-trabajo">Método</a>
-      <a href="#herramientas">Stack</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
-</div>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<header class="wrap top">
+  <a class="brand glow" href="#inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3.1 4.5 6.9 4.5c2.1 0 3.6 1.1 5.1 3 1.5-1.9 3-3 5.1-3 3.8 0 6 3.8 4.5 7.3C19.5 16.4 12 21 12 21z"/></svg>abigail.avendaño</a>
+  <nav class="nav" aria-label="Secciones">
+    <a href="#proyectos">Proyectos</a>
+    <a href="#como-trabajo">Cómo trabajo</a>
+    <a href="#herramientas">Herramientas</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
 
 <main id="inicio">
-  <div class="hero-band">
-    <canvas id="grid" aria-hidden="true"></canvas>
-    <div class="wrap hero">
-      <div>
-        <p class="label">Desarrollo web · Costa Rica</p>
-        <h1><span class="grad">Abigail Avendaño</span><span class="sub">Software que cualquiera puede usar a la primera.</span></h1>
-        <div class="term" aria-label="Terminal">
-          <span class="p">abigail@adep</span><span class="c">:~$</span> <span id="typed">npm run deploy</span><span class="caret" aria-hidden="true"></span>
-          <span class="out" id="term-out">✓ 6 proyectos en línea · web · Android · iOS</span>
-        </div>
-        <p class="lede">Diseño y programo aplicaciones web y móviles para <strong>ADEP</strong>, una asociación de educadores pensionados. Mis usuarios tienen entre 60 y 90 años, así que cada pantalla tiene que ser <strong>clara, segura y fácil de leer</strong>.</p>
-        <div class="cta">
-          <a class="btn primary" href="#proyectos">Ver proyectos →</a>
-          <a class="btn" href="https://github.com/abigailavendano" target="_blank" rel="noopener">GitHub</a>
-        </div>
-        <div class="sizer" role="group" aria-label="Tamaño del texto">
-          <button type="button" id="menos" aria-label="Letra más pequeña">A−</button>
-          <button type="button" id="mas" aria-label="Letra más grande">A+</button>
-          <span>Pruébelo: el mismo control de letra que pongo en mis apps para adultos mayores.</span>
-        </div>
+  <div class="hero">
+    <canvas class="bloom tr" data-seed="7" aria-hidden="true"></canvas>
+    <canvas class="bloom bl" data-seed="21" aria-hidden="true"></canvas>
+    <div class="wrap hero-in">
+      <p class="label">Desarrollo web · Costa Rica</p>
+      <h1 class="glow">Abigail Avendaño</h1>
+      <p class="hello">software que cualquiera puede usar a la primera</p>
+      <p class="lede">Diseño y programo aplicaciones web y móviles para <strong>ADEP</strong>, una asociación de educadores pensionados. Mis usuarios tienen entre 60 y 90 años, así que cada pantalla tiene que ser <strong>clara, segura y fácil de leer</strong>.</p>
+      <div class="cta">
+        <a class="btn solid" href="#proyectos">Ver proyectos</a>
+        <a class="btn" href="https://github.com/abigailavendano" target="_blank" rel="noopener">GitHub</a>
       </div>
-
-      <div class="phone-wrap">
-        <div class="phone" aria-label="Ejemplo de pantalla de ADEP Vota">
-          <div class="screen">
-            <div class="bar"><span>ADEP VOTA</span><b>● EN VIVO</b></div>
-            <p class="label">Asamblea · Votación 3</p>
-            <h3>¿Aprueba el acta de la sesión anterior?</h3>
-            <p class="q">Su voto es secreto. Solo se guarda el conteo.</p>
-            <div class="vote">
-              <button type="button" id="v-si" aria-pressed="false">Sí, apruebo</button>
-              <button type="button" id="v-no" aria-pressed="false">No apruebo</button>
-              <button type="button" id="v-ab" aria-pressed="false">Me abstengo</button>
-            </div>
-            <p class="receipt" id="receipt" aria-live="polite"></p>
-          </div>
-        </div>
+      <div class="sizer" role="group" aria-label="Tamaño del texto">
+        <button type="button" id="menos" aria-label="Letra más pequeña">A−</button>
+        <button type="button" id="mas" aria-label="Letra más grande">A+</button>
+        <span>Pruébelo: el mismo control de letra que pongo en mis apps para adultos mayores.</span>
       </div>
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="stats">
-      <div class="stat"><b>06</b><span>proyectos publicados</span></div>
-      <div class="stat"><b>03</b><span>plataformas: web, Android e iOS</span></div>
-      <div class="stat"><b>04</b><span>servicios de publicación: Vercel, Firebase, GitHub Pages y Render</span></div>
-    </div>
+  <div class="wrap pills" aria-label="En números">
+    <div class="pill"><i aria-hidden="true">♥</i><b>6</b> proyectos publicados</div>
+    <div class="pill"><i aria-hidden="true">★</i><b>3</b> plataformas: web, Android e iOS</div>
+    <div class="pill"><i aria-hidden="true">●</i><b>4</b> servicios: Vercel, Firebase, GitHub Pages y Render</div>
   </div>
 
   <section id="proyectos">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="label">Proyectos</p><h2>Sistemas en línea</h2></div>
+        <p class="label">Proyectos</p>
+        <h2 class="glow">En pantalla</h2>
         <p>Cada uno resuelve una necesidad concreta de la asociación y está publicado y en uso.</p>
       </div>
 
-      <div class="grid">
-        <article class="panel card feature">
-          <div style="display:grid; gap:1rem; align-content:start">
-            <div class="status"><p class="label">Votación · Web, Android e iOS</p><span class="online">En línea</span></div>
-            <h3 class="grad">ADEP Vota</h3>
-            <p class="desc">Sistema oficial de votación de la asociación. Las personas afiliadas votan desde su celular en asambleas y sesiones de Junta Directiva, con voto secreto y resultados al instante.</p>
-            <div class="links">
-              <a href="https://adep-vota.web.app" target="_blank" rel="noopener">Ver la app</a>
-              <a href="https://github.com/adepcr/sistema-votaciones-Abigail-Avendano" target="_blank" rel="noopener">Código</a>
-              <a href="https://adepcr.github.io/SISTEMAVOTACIONES-FINAL-GRUPAL/" target="_blank" rel="noopener">Versión grupal</a>
-            </div>
-          </div>
-          <div style="display:grid; gap:1.2rem">
-            <ul class="feats">
-              <li>Voto secreto: se guarda solo el conteo, nunca la cédula.</li>
-              <li>Códigos de activación y una cédula por celular.</li>
-              <li>Comprobante verificable, minuta en PDF y exportación a Excel.</li>
-              <li>Lectura en voz alta, letra grande y un asistente guiado.</li>
-              <li>Base del proyecto final grupal, que unió lo mejor de tres sistemas.</li>
-            </ul>
-            <div class="chips"><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Capacitor</span><span class="chip">PWA</span><span class="chip">Firebase Hosting</span></div>
+      <div class="stage">
+        <article class="frame main" data-tab="Proyecto principal">
+          <p class="label">Votación · Web, Android e iOS</p>
+          <h3 class="glow">ADEP Vota</h3>
+          <p class="desc">Sistema oficial de votación de la asociación. Las personas afiliadas votan desde su celular en asambleas y sesiones de Junta Directiva, con voto secreto y resultados al instante.</p>
+          <ul class="feats">
+            <li>Voto secreto: se guarda solo el conteo, nunca la cédula.</li>
+            <li>Códigos de activación y una cédula por celular.</li>
+            <li>Comprobante verificable, minuta en PDF y exportación a Excel.</li>
+            <li>Lectura en voz alta, letra grande y un asistente guiado.</li>
+          </ul>
+          <div class="chips"><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Capacitor</span><span class="chip">PWA</span><span class="chip">Firebase Hosting</span></div>
+          <div class="links">
+            <a href="https://adep-vota.web.app" target="_blank" rel="noopener">Ver la app ↗</a>
+            <a href="https://github.com/adepcr/sistema-votaciones-Abigail-Avendano" target="_blank" rel="noopener">Código ↗</a>
           </div>
         </article>
 
-        <article class="panel card wide c-violet">
-          <div class="status"><p class="label">Identidad · PWA</p><span class="online">En línea</span></div>
+        <aside class="frame vote-panel" data-tab="Pruébelo" aria-label="Ejemplo de pantalla de ADEP Vota">
+          <div class="bar"><span>ADEP Vota</span><span>● en vivo</span></div>
+          <h4>¿Aprueba el acta de la sesión anterior?</h4>
+          <p class="q">Su voto es secreto. Solo se guarda el conteo.</p>
+          <div class="vote">
+            <button type="button" id="v-si" aria-pressed="false">Sí, apruebo</button>
+            <button type="button" id="v-no" aria-pressed="false">No apruebo</button>
+            <button type="button" id="v-ab" aria-pressed="false">Me abstengo</button>
+          </div>
+          <p class="receipt" id="receipt" aria-live="polite"></p>
+        </aside>
+      </div>
+
+      <div class="grid">
+        <article class="frame card wide" data-tab="Identidad">
           <h3>Mi Carnet ADEP</h3>
           <p class="desc">Carnet digital de afiliación. Cada persona lo crea con su cédula, se toma la foto con el celular y lo muestra en comercios con convenio.</p>
           <ul class="feats">
@@ -278,13 +238,12 @@ footer .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wr
           </ul>
           <div class="chips"><span class="chip">Vercel</span><span class="chip">Supabase</span><span class="chip">Node.js</span><span class="chip">Service Worker</span></div>
           <div class="links">
-            <a href="https://carnet-adep.vercel.app" target="_blank" rel="noopener">Ver la app</a>
-            <a href="https://github.com/adepcr/AplicacionCarnets---Abigail-Avendano" target="_blank" rel="noopener">Código</a>
+            <a href="https://carnet-adep.vercel.app" target="_blank" rel="noopener">Ver la app ↗</a>
+            <a href="https://github.com/adepcr/AplicacionCarnets---Abigail-Avendano" target="_blank" rel="noopener">Código ↗</a>
           </div>
         </article>
 
-        <article class="panel card wide c-pink">
-          <div class="status"><p class="label">Gestión documental</p><span class="online">En línea</span></div>
+        <article class="frame card wide" data-tab="Archivo">
           <h3>Inventario del Archivo General</h3>
           <p class="desc">Buscador del archivo físico: dice en qué estante, nivel y bloque está cada documento y quién lo tiene prestado.</p>
           <ul class="feats">
@@ -295,13 +254,12 @@ footer .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wr
           </ul>
           <div class="chips"><span class="chip">Supabase Auth</span><span class="chip">Row Level Security</span><span class="chip">Vercel</span></div>
           <div class="links">
-            <a href="https://inventario-archivo-docs.vercel.app/" target="_blank" rel="noopener">Ver la app</a>
-            <a href="https://github.com/adepcr/Inventario--archivo-Abigail-Rashid" target="_blank" rel="noopener">Código</a>
+            <a href="https://inventario-archivo-docs.vercel.app/" target="_blank" rel="noopener">Ver la app ↗</a>
+            <a href="https://github.com/adepcr/Inventario--archivo-Abigail-Rashid" target="_blank" rel="noopener">Código ↗</a>
           </div>
         </article>
 
-        <article class="panel card c-lime">
-          <p class="label">Encuestas · Datos</p>
+        <article class="frame card" data-tab="Encuestas">
           <h3>Encuesta de Servicio</h3>
           <p class="desc">Encuesta de 14 preguntas en 5 pasos, con resultados y gráficos para la Junta Directiva.</p>
           <ul class="feats">
@@ -310,13 +268,12 @@ footer .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wr
           </ul>
           <div class="chips"><span class="chip">JavaScript</span><span class="chip">Apps Script</span></div>
           <div class="links">
-            <a href="https://encuesta-adep.vercel.app/" target="_blank" rel="noopener">Ver</a>
-            <a href="https://github.com/adepcr/encuesta-adep-AbigailAvendano" target="_blank" rel="noopener">Código</a>
+            <a href="https://encuesta-adep.vercel.app/" target="_blank" rel="noopener">Ver ↗</a>
+            <a href="https://github.com/adepcr/encuesta-adep-AbigailAvendano" target="_blank" rel="noopener">Código ↗</a>
           </div>
         </article>
 
-        <article class="panel card">
-          <p class="label">Educación · En vivo</p>
+        <article class="frame card" data-tab="Educación">
           <h3>IA para todos</h3>
           <p class="desc">Sitio para una charla sobre inteligencia artificial para personas adultas mayores, con actividades y un concurso en vivo.</p>
           <ul class="feats">
@@ -325,17 +282,17 @@ footer .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wr
           </ul>
           <div class="chips"><span class="chip">Node.js</span><span class="chip">Render</span></div>
           <div class="links">
-            <a href="https://github.com/abigailavendano/IA-para-todos" target="_blank" rel="noopener">Código</a>
+            <a href="https://github.com/abigailavendano/IA-para-todos" target="_blank" rel="noopener">Código ↗</a>
           </div>
         </article>
 
-        <article class="panel card c-violet">
-          <p class="label">Trabajo en equipo</p>
+        <article class="frame card" data-tab="En equipo">
           <h3>ADEP Vota, versión grupal</h3>
           <p class="desc">Proyecto final en grupo. Mi sistema fue la base, y sumamos ideas de los otros: reloj del servidor, aviso de conexión y confirmación a prueba de toques accidentales.</p>
           <div class="chips"><span class="chip">GitHub Actions</span><span class="chip">GitHub Pages</span></div>
           <div class="links">
-            <a href="https://github.com/adepcr/SISTEMAVOTACIONES-FINAL-GRUPAL" target="_blank" rel="noopener">Código</a>
+            <a href="https://adepcr.github.io/SISTEMAVOTACIONES-FINAL-GRUPAL/" target="_blank" rel="noopener">Ver ↗</a>
+            <a href="https://github.com/adepcr/SISTEMAVOTACIONES-FINAL-GRUPAL" target="_blank" rel="noopener">Código ↗</a>
           </div>
         </article>
       </div>
@@ -345,43 +302,46 @@ footer .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wr
   <section id="como-trabajo">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="label">Método</p><h2>Cómo trabajo</h2></div>
-        <p>Cuatro reglas que se repiten en todos mis proyectos.</p>
+        <p class="label">Cómo trabajo</p>
+        <h2 class="glow">Cuatro reglas</h2>
+        <p>Se repiten en todos mis proyectos.</p>
       </div>
       <div class="principles">
-        <div class="panel pr"><span class="idx">[ACCESIBLE]</span><h3>Primero, que se lea</h3><p>Letra grande, botones amplios, control A−/A+ y lectura en voz alta. Si mi usuario más mayor no lo entiende, no está listo.</p></div>
-        <div class="panel pr c-violet"><span class="idx">[PRIVADO]</span><h3>Privacidad de verdad</h3><p>Voto secreto, cédulas que se muestran incompletas y permisos que controla la base de datos, no la página.</p></div>
-        <div class="panel pr c-pink"><span class="idx">[OFFLINE]</span><h3>Que funcione sin señal</h3><p>Apps instalables que siguen funcionando aunque el celular pierda internet en medio de la asamblea.</p></div>
-        <div class="panel pr c-lime"><span class="idx">[DOCUMENTADO]</span><h3>Fácil de entregar</h3><p>Cada repositorio trae guías como <code>PUBLICAR.md</code> o <code>ENTREGA.md</code> para que otra persona pueda mantenerlo.</p></div>
+        <div class="frame pr" data-tab="Accesible"><span class="ico glow" aria-hidden="true">✿</span><h3>Primero, que se lea</h3><p>Letra grande, botones amplios, control A−/A+ y lectura en voz alta. Si mi usuario más mayor no lo entiende, no está listo.</p></div>
+        <div class="frame pr" data-tab="Privado"><span class="ico glow" aria-hidden="true">♥</span><h3>Privacidad de verdad</h3><p>Voto secreto, cédulas que se muestran incompletas y permisos que controla la base de datos, no la página.</p></div>
+        <div class="frame pr" data-tab="Sin señal"><span class="ico glow" aria-hidden="true">★</span><h3>Que funcione sin internet</h3><p>Apps instalables que siguen funcionando aunque el celular pierda la señal en medio de la asamblea.</p></div>
+        <div class="frame pr" data-tab="Documentado"><span class="ico glow" aria-hidden="true">✦</span><h3>Fácil de entregar</h3><p>Cada repositorio trae guías como <code>PUBLICAR.md</code> o <code>ENTREGA.md</code> para que otra persona pueda mantenerlo.</p></div>
       </div>
     </div>
   </section>
 
   <section id="herramientas">
     <div class="wrap">
-      <div class="sec-head"><div><p class="label">Stack</p><h2>Herramientas</h2></div></div>
+      <div class="sec-head"><p class="label">Herramientas</p><h2 class="glow">Con qué construyo</h2></div>
       <div class="stack">
-        <div class="panel"><h3>Frontend</h3><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">PWA</span><span class="chip">Accesibilidad</span><span class="chip">Diseño responsivo</span></div></div>
-        <div class="panel c-violet"><h3>Backend y datos</h3><div class="chips"><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Row Level Security</span><span class="chip">Node.js</span><span class="chip">Google Apps Script</span></div></div>
-        <div class="panel c-pink"><h3>Móvil y publicación</h3><div class="chips"><span class="chip">Capacitor</span><span class="chip">Android</span><span class="chip">iOS</span><span class="chip">Vercel</span><span class="chip">Firebase</span><span class="chip">GitHub Pages</span><span class="chip">Git</span></div></div>
+        <div class="frame" data-tab="Frontend"><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">PWA</span><span class="chip">Accesibilidad</span><span class="chip">Diseño responsivo</span></div></div>
+        <div class="frame" data-tab="Backend y datos"><div class="chips"><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Row Level Security</span><span class="chip">Node.js</span><span class="chip">Google Apps Script</span></div></div>
+        <div class="frame" data-tab="Móvil y publicación"><div class="chips"><span class="chip">Capacitor</span><span class="chip">Android</span><span class="chip">iOS</span><span class="chip">Vercel</span><span class="chip">Firebase</span><span class="chip">GitHub Pages</span><span class="chip">Git</span></div></div>
       </div>
     </div>
   </section>
 
   <div class="contact" id="contacto">
+    <canvas class="bloom tr" data-seed="33" aria-hidden="true"></canvas>
+    <canvas class="bloom bl" data-seed="48" aria-hidden="true"></canvas>
     <div class="wrap inner">
       <p class="label">Contacto</p>
-      <h2>¿Tiene un proyecto que necesita <span class="grad">gente real</span> usándolo?</h2>
+      <h2 class="glow">¿Tiene un proyecto que necesita gente real usándolo?</h2>
       <p>Busco prácticas, proyectos y trabajo en desarrollo web. Escríbame y conversamos.</p>
       <div class="cta">
-        <a class="btn primary" href="https://github.com/abigailavendano" target="_blank" rel="noopener">github.com/abigailavendano</a>
+        <a class="btn solid" href="https://github.com/abigailavendano" target="_blank" rel="noopener">github.com/abigailavendano</a>
       </div>
     </div>
   </div>
 </main>
 
 <footer>
-  <div class="wrap"><span>© 2026 Abigail Avendaño</span><span>SISTEMA EN LÍNEA · HTML · CSS · JS</span></div>
+  <div class="wrap"><span>© 2026 Abigail Avendaño</span><span class="t">gracias por visitar ✿</span></div>
 </footer>
 
 <script>
@@ -397,45 +357,88 @@ footer .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wr
   btns.forEach(function(id){
     document.getElementById(id).addEventListener('click',function(){
       btns.forEach(function(o){ document.getElementById(o).setAttribute('aria-pressed', o===id?'true':'false'); });
-      r.textContent='✓ Voto registrado · comprobante '+Math.random().toString(36).slice(2,8).toUpperCase();
+      r.textContent='✓ voto registrado · '+Math.random().toString(36).slice(2,8).toUpperCase();
     });
   });
 
   var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR=Math.min(window.devicePixelRatio||1,2);
 
-  // terminal: rota comandos (el primero ya está visible al cargar)
-  var cmds=[['npm run deploy','✓ 6 proyectos en línea · web · Android · iOS'],
-            ['supabase db push','✓ Row Level Security activa · voto secreto'],
-            ['npx cap sync','✓ Android e iOS sincronizados'],
-            ['lighthouse --a11y','✓ letra grande · contraste · lectura en voz alta']];
-  var typed=document.getElementById('typed'), out=document.getElementById('term-out'), ci=0;
-  if(!reduce){
-    setInterval(function(){
-      ci=(ci+1)%cmds.length; var c=cmds[ci][0], i=0; out.style.opacity=0; typed.textContent='';
-      var t=setInterval(function(){ typed.textContent=c.slice(0,++i); if(i>=c.length){ clearInterval(t); out.textContent=cmds[ci][1]; out.style.opacity=1; } },55);
-    },4200);
-  }
+  // números pseudoaleatorios con semilla, para que cada ramo salga siempre igual
+  function rng(seed){ return function(){ seed=(seed*16807)%2147483647; return (seed-1)/2147483646; }; }
 
-  // cuadrícula en perspectiva
-  var cv=document.getElementById('grid'), ctx=cv.getContext('2d'), off=0, w, h, dpr;
-  function size(){ dpr=Math.min(window.devicePixelRatio||1,2); w=cv.clientWidth; h=cv.clientHeight; cv.width=w*dpr; cv.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
-  function draw(){
-    ctx.clearRect(0,0,w,h);
-    var hz=h*0.52, cx=w*0.5;
-    for(var i=-24;i<=24;i++){
-      ctx.strokeStyle='rgba(60,242,255,'+(0.18-Math.abs(i)*0.004)+')'; ctx.lineWidth=1;
-      ctx.beginPath(); ctx.moveTo(cx+i*8,hz); ctx.lineTo(cx+i*w*0.11,h); ctx.stroke();
-    }
-    for(var j=0;j<18;j++){
-      var p=((j+off)%18)/18, y=hz+(h-hz)*p*p;
-      ctx.strokeStyle='rgba(155,107,255,'+(0.05+p*0.3)+')';
-      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke();
-    }
-    var g=ctx.createLinearGradient(0,hz-60,0,hz+40); g.addColorStop(0,'rgba(5,7,15,0)'); g.addColorStop(1,'rgba(5,7,15,0)');
-    g.addColorStop(.6,'rgba(255,79,216,.10)'); ctx.fillStyle=g; ctx.fillRect(0,hz-60,w,100);
+  function flower(ctx,x,y,r,rot,alpha){
+    ctx.save(); ctx.translate(x,y); ctx.rotate(rot); ctx.globalAlpha=alpha;
+    ctx.fillStyle='#fff';
+    for(var k=0;k<5;k++){ ctx.rotate(Math.PI*2/5); ctx.beginPath(); ctx.ellipse(0,-r*.55,r*.38,r*.55,0,0,Math.PI*2); ctx.fill(); }
+    ctx.fillStyle='#C9D3FF'; ctx.beginPath(); ctx.arc(0,0,r*.18,0,Math.PI*2); ctx.fill();
+    ctx.restore();
   }
-  function loop(){ off+=0.025; draw(); requestAnimationFrame(loop); }
-  size(); draw(); window.addEventListener('resize',function(){ size(); draw(); });
+  function leaf(ctx,x,y,len,rot,col){
+    ctx.save(); ctx.translate(x,y); ctx.rotate(rot); ctx.fillStyle=col;
+    ctx.beginPath(); ctx.moveTo(0,0); ctx.quadraticCurveTo(len*.5,-len*.28,len,0); ctx.quadraticCurveTo(len*.5,len*.28,0,0); ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,.25)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(len*.9,0); ctx.stroke();
+    ctx.restore();
+  }
+  // ramos de flores en las esquinas
+  function drawBloom(cv){
+    var w=cv.clientWidth, h=cv.clientHeight; if(!w||!h) return;
+    cv.width=w*DPR; cv.height=h*DPR; var ctx=cv.getContext('2d'); ctx.setTransform(DPR,0,0,DPR,0,0); ctx.clearRect(0,0,w,h);
+    var R=rng(+cv.dataset.seed||1), tr=cv.classList.contains('tr');
+    var ox=tr?w:0, oy=tr?0:h; // la esquina de donde nace el ramo
+    var leaves=['#2B3FA8','#3F56CF','#5A72E6','#7489F0'];
+    for(var i=0;i<26;i++){
+      var a=R()*Math.PI/2, d=R()*Math.min(w,h)*.85;
+      var x=ox+(tr?-1:1)*Math.cos(a)*d, y=oy+(tr?1:-1)*Math.sin(a)*d;
+      leaf(ctx,x,y,22+R()*34,R()*Math.PI*2,leaves[(R()*4)|0]);
+    }
+    ctx.shadowColor='rgba(255,255,255,.9)';
+    for(var j=0;j<60;j++){
+      var a2=R()*Math.PI/2, d2=Math.pow(R(),.8)*Math.min(w,h)*.8;
+      var fx=ox+(tr?-1:1)*Math.cos(a2)*d2, fy=oy+(tr?1:-1)*Math.sin(a2)*d2;
+      var near=1-d2/(Math.min(w,h)*.8);
+      ctx.shadowBlur=10+near*14;
+      flower(ctx,fx,fy,6+R()*10+near*6,R()*6,.55+near*.45);
+    }
+  }
+  var blooms=[].slice.call(document.querySelectorAll('canvas.bloom'));
+  function drawBlooms(){ blooms.forEach(drawBloom); }
+
+  // cielo: estrellas y pétalos cayendo (fijo detrás de todo)
+  var sky=document.getElementById('sky'), sc=sky.getContext('2d'), W, H, stars=[], petals=[];
+  function sizeSky(){
+    W=window.innerWidth; H=window.innerHeight; sky.width=W*DPR; sky.height=H*DPR; sc.setTransform(DPR,0,0,DPR,0,0);
+    var R=rng(99); stars=[];
+    for(var i=0;i<Math.round(W*H/9000);i++) stars.push({x:R()*W,y:R()*H,r:R()*1.3+.3,p:R()*6});
+    petals=[]; var n=Math.round(Math.min(34, W/40));
+    for(var j=0;j<n;j++) petals.push(newPetal(R,true));
+  }
+  function newPetal(R,anywhere){
+    R=R||Math.random;
+    return {x:R()*W, y:anywhere?R()*H:-20, s:4+R()*6, vy:.25+R()*.55, vx:-.15-R()*.35, a:R()*6, va:(R()-.5)*.03, sw:R()*6};
+  }
+  function drawSky(t){
+    sc.clearRect(0,0,W,H);
+    for(var i=0;i<stars.length;i++){ var st=stars[i]; sc.globalAlpha=.35+.45*Math.sin(t/900+st.p)*.5+.25; sc.fillStyle='#fff'; sc.beginPath(); sc.arc(st.x,st.y,st.r,0,Math.PI*2); sc.fill(); }
+    sc.globalAlpha=1; sc.shadowColor='rgba(255,255,255,.95)'; sc.shadowBlur=12; sc.fillStyle='#fff';
+    for(var j=0;j<petals.length;j++){
+      var p=petals[j];
+      sc.save(); sc.translate(p.x,p.y); sc.rotate(p.a); sc.scale(1,.55+.45*Math.abs(Math.sin(p.sw)));
+      sc.beginPath(); sc.moveTo(0,-p.s); sc.quadraticCurveTo(p.s,0,0,p.s); sc.quadraticCurveTo(-p.s*.9,0,0,-p.s); sc.fill();
+      sc.restore();
+    }
+    sc.shadowBlur=0;
+  }
+  function step(){
+    for(var j=0;j<petals.length;j++){
+      var p=petals[j]; p.sw+=.02; p.y+=p.vy; p.x+=p.vx+Math.sin(p.sw)*.4; p.a+=p.va;
+      if(p.y>H+20||p.x<-20){ petals[j]=newPetal(null,false); petals[j].x=Math.random()*(W+200); }
+    }
+  }
+  function loop(t){ step(); drawSky(t); requestAnimationFrame(loop); }
+
+  sizeSky(); drawSky(0); drawBlooms();
+  var to; window.addEventListener('resize',function(){ clearTimeout(to); to=setTimeout(function(){ sizeSky(); drawSky(0); drawBlooms(); },150); });
   if(!reduce) requestAnimationFrame(loop);
 })();
 </script>
