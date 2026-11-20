@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abigail Avendaño</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portafolio de Abigail Avendaño: aplicaciones web accesibles para votar, identificarse, encuestar y aprender.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: hero tipográfico + teléfono de muestra; proyectos como fichas en rejilla asimétrica; principios en columnas; cierre de contacto en banda de color. */
+:root{
+  --bg:#F5F6FA; --surface:#FFFFFF; --ink:#11142A; --muted:#565B78; --line:#DDE0EC;
+  --accent:#2D44F5; --accent-ink:#FFFFFF; --mark:#FFE15A; --mark-ink:#11142A;
+  --ok:#0E8A5F;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --scale:1;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0C0E1C; --surface:#151935; --ink:#EEF0FF; --muted:#A3A8C7; --line:#272C52;
+  --accent:#8F9DFF; --accent-ink:#0C0E1C; --mark:#FFE15A; --mark-ink:#11142A; --ok:#4FD1A0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C0E1C; --surface:#151935; --ink:#EEF0FF; --muted:#A3A8C7; --line:#272C52;
+  --accent:#8F9DFF; --accent-ink:#0C0E1C; --mark:#FFE15A; --mark-ink:#11142A; --ok:#4FD1A0; color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html{font-size:calc(16px * var(--scale)); scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{animation:none!important; transition:none!important}}
+body{background:var(--bg); color:var(--ink); font-family:var(--f-body); font-size:1.0625rem; line-height:1.6}
+.wrap{max-width:72rem; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent); outline-offset:3px; border-radius:4px}
+h1,h2,h3{font-family:var(--f-display); text-wrap:balance; line-height:1.05; margin:0}
+p{margin:0}
+.label{font-family:var(--f-mono); font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+mark{background:linear-gradient(transparent 55%, var(--mark) 55%); color:inherit; padding:0 .1em}
+
+/* barra superior */
+.top{display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding-block:1.25rem}
+.brand{font-family:var(--f-display); font-weight:800; font-size:1.125rem; text-decoration:none}
+.nav{display:flex; gap:1.25rem; flex-wrap:wrap; font-size:.95rem}
+.nav a{text-decoration:none; color:var(--muted)} .nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:3rem; align-items:center; padding-block:3rem 4.5rem}
+.hero h1{font-size:clamp(2.6rem, 7vw, 5.4rem); font-weight:800; letter-spacing:-.03em}
+.hero h1 .thin{font-weight:400; color:var(--muted)}
+.lede{margin-top:1.5rem; max-width:36rem; font-size:1.2rem; color:var(--muted)}
+.lede strong{color:var(--ink); font-weight:600}
+.cta{display:flex; gap:.75rem; flex-wrap:wrap; margin-top:2rem}
+.btn{display:inline-flex; align-items:center; gap:.5rem; font-weight:600; text-decoration:none; padding:.85rem 1.3rem; border-radius:999px; border:2px solid var(--ink); font-size:1rem}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.btn:hover{transform:translateY(-2px)} .btn{transition:transform .15s}
+.sizer{margin-top:2.25rem; display:flex; align-items:center; gap:.75rem; flex-wrap:wrap}
+.sizer button{font-family:var(--f-display); font-weight:800; font-size:1.05rem; width:3rem; height:3rem; border-radius:12px; border:2px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer}
+.sizer button:hover{border-color:var(--accent)}
+.sizer span{font-size:.92rem; color:var(--muted); max-width:22rem}
+
+/* teléfono */
+.phone{justify-self:center; width:min(19rem,100%); aspect-ratio:9/18; max-width:100%; background:var(--ink); border-radius:2.6rem; padding:.7rem; box-shadow:0 30px 60px -25px rgba(17,20,42,.45); transform:rotate(3deg)}
+.screen{height:100%; background:var(--surface); border-radius:2rem; padding:1.6rem 1.2rem; display:flex; flex-direction:column; gap:1rem; overflow:hidden}
+.screen .bar{display:flex; justify-content:space-between; font-family:var(--f-mono); font-size:.68rem; color:var(--muted)}
+.screen h3{font-size:1.35rem}
+.screen .q{font-size:1rem; color:var(--muted)}
+.vote{display:grid; gap:.6rem; margin-top:auto}
+.vote button{font:600 1.15rem var(--f-body); padding:1rem; border-radius:16px; border:2px solid var(--line); background:var(--bg); color:var(--ink); cursor:pointer; text-align:left}
+.vote button[aria-pressed="true"]{border-color:var(--accent); background:var(--accent); color:var(--accent-ink)}
+.receipt{font-family:var(--f-mono); font-size:.72rem; color:var(--ok); min-height:1.2em}
+
+/* secciones */
+section{padding-block:4.5rem}
+.sec-head{display:flex; justify-content:space-between; align-items:end; gap:1.5rem; flex-wrap:wrap; margin-bottom:2.5rem}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3.2rem); font-weight:800; letter-spacing:-.02em}
+.sec-head p{max-width:30rem; color:var(--muted)}
+
+.strip{border-block:1px solid var(--line); padding-block:1.4rem}
+.strip .wrap{display:flex; flex-wrap:wrap; gap:.6rem 2rem; justify-content:space-between}
+.fact{display:flex; align-items:baseline; gap:.5rem}
+.fact b{font-family:var(--f-display); font-size:1.8rem; font-weight:800; font-variant-numeric:tabular-nums}
+.fact span{color:var(--muted); font-size:.95rem}
+
+/* proyectos */
+.grid{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:1.25rem}
+.card{grid-column:span 2; background:var(--surface); border:1px solid var(--line); border-radius:22px; padding:1.6rem; display:flex; flex-direction:column; gap:1rem; min-width:0; transition:border-color .2s, transform .2s}
+.card:hover{border-color:var(--accent); transform:translateY(-3px)}
+.card.wide{grid-column:span 3}
+.card.feature{grid-column:span 6; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:2rem; background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.card.feature .label,.card.feature .desc{color:color-mix(in srgb, var(--bg) 72%, var(--ink))}
+.card.feature .chip{border-color:color-mix(in srgb, var(--bg) 30%, var(--ink)); color:var(--bg)}
+.card.feature h3{font-size:clamp(1.9rem,4vw,2.8rem)}
+.card h3{font-size:1.55rem; font-weight:700}
+.desc{color:var(--muted)}
+.feats{list-style:none; margin:0; padding:0; display:grid; gap:.55rem}
+.feats li{display:grid; grid-template-columns:1.2rem minmax(0,1fr); gap:.5rem}
+.feats li::before{content:"✓"; color:var(--mark); font-weight:700}
+.chips{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:auto}
+.chip{font-family:var(--f-mono); font-size:.72rem; padding:.25rem .6rem; border:1px solid var(--line); border-radius:999px; color:var(--muted)}
+.links{display:flex; gap:1.2rem; flex-wrap:wrap; font-weight:600; font-size:.95rem}
+.links a{text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:4px; text-decoration-color:var(--accent)}
+.card.feature .links a{text-decoration-color:var(--mark)}
+
+/* principios */
+.principles{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:2rem}
+.pr{border-top:3px solid var(--ink); padding-top:1.1rem; display:grid; gap:.6rem; min-width:0}
+.pr h3{font-size:1.3rem}
+.pr p{color:var(--muted); font-size:1rem}
+.pr code{font-family:var(--f-mono); font-size:.85em; background:var(--surface); border:1px solid var(--line); padding:.05rem .35rem; border-radius:6px}
+
+/* stack */
+.stack{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem}
+.st{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:1.4rem; min-width:0}
+.st h3{font-size:1.1rem; margin-bottom:.8rem}
+
+/* contacto */
+.contact{background:var(--accent); color:var(--accent-ink); padding-block:5rem; margin-top:2rem}
+.contact h2{font-size:clamp(2.2rem,6vw,4.4rem); font-weight:800; letter-spacing:-.03em; max-width:52rem}
+.contact p{margin-top:1.2rem; max-width:34rem; font-size:1.15rem; opacity:.9}
+.contact .cta .btn{border-color:var(--accent-ink); color:var(--accent-ink)}
+.contact .cta .btn.solid{background:var(--accent-ink); color:var(--accent)}
+footer{padding-block:2rem; color:var(--muted); font-size:.9rem}
+footer .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+
+@media (max-width: 900px){
+  .hero{grid-template-columns:minmax(0,1fr); padding-block:2rem 3.5rem}
+  .phone{width:min(16rem,100%); transform:none}
+  .card,.card.wide{grid-column:span 6}
+  .card.feature{grid-template-columns:minmax(0,1fr)}
+  .principles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stack{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width: 520px){ .principles{grid-template-columns:minmax(0,1fr)} .nav{display:none} }
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="#inicio">Abigail Avendaño</a>
+  <nav class="nav" aria-label="Secciones">
+    <a href="#proyectos">Proyectos</a>
+    <a href="#como-trabajo">Cómo trabajo</a>
+    <a href="#herramientas">Herramientas</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main id="inicio">
+  <div class="wrap hero">
+    <div>
+      <p class="label">Desarrollo web · Costa Rica</p>
+      <h1 style="margin-top:1rem">Software que <mark>cualquiera</mark> puede usar <span class="thin">a la primera.</span></h1>
+      <p class="lede">Diseño y programo aplicaciones web y móviles para <strong>ADEP</strong>, una asociación de educadores pensionados. Mis usuarios tienen entre 60 y 90 años, así que cada pantalla tiene que ser <strong>clara, segura y fácil de leer</strong>.</p>
+      <div class="cta">
+        <a class="btn primary" href="#proyectos">Ver proyectos →</a>
+        <a class="btn" href="https://github.com/abigailavendano" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="sizer" role="group" aria-label="Tamaño del texto">
+        <button type="button" id="menos" aria-label="Letra más pequeña">A−</button>
+        <button type="button" id="mas" aria-label="Letra más grande">A+</button>
+        <span>Pruébelo: el mismo control de letra que pongo en mis apps para adultos mayores.</span>
+      </div>
+    </div>
+
+    <div class="phone" aria-label="Ejemplo de pantalla de ADEP Vota">
+      <div class="screen">
+        <div class="bar"><span>ADEP Vota</span><span>● En vivo</span></div>
+        <p class="label">Asamblea · Votación 3</p>
+        <h3>¿Aprueba el acta de la sesión anterior?</h3>
+        <p class="q">Su voto es secreto. Solo se guarda el conteo.</p>
+        <div class="vote">
+          <button type="button" id="v-si" aria-pressed="false">Sí, apruebo</button>
+          <button type="button" id="v-no" aria-pressed="false">No apruebo</button>
+          <button type="button" id="v-ab" aria-pressed="false">Me abstengo</button>
+        </div>
+        <p class="receipt" id="receipt" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap">
+      <div class="fact"><b>6</b><span>proyectos publicados</span></div>
+      <div class="fact"><b>3</b><span>plataformas: web, Android e iOS</span></div>
+      <div class="fact"><b>4</b><span>servicios de publicación: Vercel, Firebase, GitHub Pages y Render</span></div>
+    </div>
+  </div>
+
+  <section id="proyectos">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Proyectos</h2>
+        <p>Cada uno resuelve una necesidad concreta de la asociación y está publicado y en uso.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card feature">
+          <div style="display:grid; gap:1rem; align-content:start">
+            <p class="label">Votación · Web, Android e iOS</p>
+            <h3>ADEP Vota</h3>
+            <p class="desc">Sistema oficial de votación de la asociación. Las personas afiliadas votan desde su celular en asambleas y sesiones de Junta Directiva, con voto secreto y resultados al instante.</p>
+            <div class="links">
+              <a href="https://adep-vota.web.app" target="_blank" rel="noopener">Ver la app</a>
+              <a href="https://github.com/adepcr/sistema-votaciones-Abigail-Avendano" target="_blank" rel="noopener">Código</a>
+              <a href="https://adepcr.github.io/SISTEMAVOTACIONES-FINAL-GRUPAL/" target="_blank" rel="noopener">Versión grupal</a>
+            </div>
+          </div>
+          <div style="display:grid; gap:1.2rem">
+            <ul class="feats">
+              <li>Voto secreto: se guarda solo el conteo, nunca la cédula.</li>
+              <li>Códigos de activación y una cédula por celular.</li>
+              <li>Comprobante verificable, minuta en PDF y exportación a Excel.</li>
+              <li>Lectura en voz alta, letra grande y un asistente guiado.</li>
+              <li>Base del proyecto final grupal, que unió lo mejor de tres sistemas.</li>
+            </ul>
+            <div class="chips"><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Capacitor</span><span class="chip">PWA</span><span class="chip">Firebase Hosting</span></div>
+          </div>
+        </article>
+
+        <article class="card wide">
+          <p class="label">Identidad · PWA</p>
+          <h3>Mi Carnet ADEP</h3>
+          <p class="desc">Carnet digital de afiliación. Cada persona lo crea con su cédula, se toma la foto con el celular y lo muestra en comercios con convenio.</p>
+          <ul class="feats">
+            <li>QR de verificación que muestra si el carnet está vigente.</li>
+            <li>Acepta cédula nacional, residencia y DIMEX.</li>
+            <li>Consentimiento para la foto según la Ley 8968.</li>
+            <li>Se instala como app y funciona sin internet.</li>
+          </ul>
+          <div class="chips"><span class="chip">Vercel</span><span class="chip">Supabase</span><span class="chip">Node.js</span><span class="chip">Service Worker</span></div>
+          <div class="links">
+            <a href="https://carnet-adep.vercel.app" target="_blank" rel="noopener">Ver la app</a>
+            <a href="https://github.com/adepcr/AplicacionCarnets---Abigail-Avendano" target="_blank" rel="noopener">Código</a>
+          </div>
+        </article>
+
+        <article class="card wide">
+          <p class="label">Gestión documental</p>
+          <h3>Inventario del Archivo General</h3>
+          <p class="desc">Buscador del archivo físico: dice en qué estante, nivel y bloque está cada documento y quién lo tiene prestado.</p>
+          <ul class="feats">
+            <li>Búsqueda por área, año, tipo y contenido.</li>
+            <li>Registro de préstamos y devoluciones.</li>
+            <li>Roles de editor y lector protegidos en la base de datos.</li>
+            <li>Historial de cambios y respaldo en Excel.</li>
+          </ul>
+          <div class="chips"><span class="chip">Supabase Auth</span><span class="chip">Row Level Security</span><span class="chip">Vercel</span></div>
+          <div class="links">
+            <a href="https://inventario-archivo-docs.vercel.app/" target="_blank" rel="noopener">Ver la app</a>
+            <a href="https://github.com/adepcr/Inventario--archivo-Abigail-Rashid" target="_blank" rel="noopener">Código</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="label">Encuestas · Datos</p>
+          <h3>Encuesta de Servicio</h3>
+          <p class="desc">Encuesta de 14 preguntas en 5 pasos, con resultados y gráficos para la Junta Directiva.</p>
+          <ul class="feats">
+            <li>Guarda el avance si se cierra la página.</li>
+            <li>Informe en PDF enviado por correo.</li>
+          </ul>
+          <div class="chips"><span class="chip">JavaScript</span><span class="chip">Apps Script</span></div>
+          <div class="links">
+            <a href="https://encuesta-adep.vercel.app/" target="_blank" rel="noopener">Ver</a>
+            <a href="https://github.com/adepcr/encuesta-adep-AbigailAvendano" target="_blank" rel="noopener">Código</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="label">Educación · En vivo</p>
+          <h3>IA para todos</h3>
+          <p class="desc">Sitio para una charla sobre inteligencia artificial para personas adultas mayores, con actividades y un concurso en vivo.</p>
+          <ul class="feats">
+            <li>Quiz multijugador desde el celular con QR.</li>
+            <li>Ruleta que carga nombres desde Excel o Word.</li>
+          </ul>
+          <div class="chips"><span class="chip">Node.js</span><span class="chip">Render</span></div>
+          <div class="links">
+            <a href="https://github.com/abigailavendano/IA-para-todos" target="_blank" rel="noopener">Código</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="label">Trabajo en equipo</p>
+          <h3>ADEP Vota, versión grupal</h3>
+          <p class="desc">Proyecto final en grupo. Mi sistema fue la base, y sumamos ideas de los otros: reloj del servidor, aviso de conexión y confirmación a prueba de toques accidentales.</p>
+          <div class="chips"><span class="chip">GitHub Actions</span><span class="chip">GitHub Pages</span></div>
+          <div class="links">
+            <a href="https://github.com/adepcr/SISTEMAVOTACIONES-FINAL-GRUPAL" target="_blank" rel="noopener">Código</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-trabajo">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Cómo trabajo</h2>
+        <p>Cuatro reglas que se repiten en todos mis proyectos.</p>
+      </div>
+      <div class="principles">
+        <div class="pr"><h3>Primero, que se lea</h3><p>Letra grande, botones amplios, control A−/A+ y lectura en voz alta. Si mi usuario más mayor no lo entiende, no está listo.</p></div>
+        <div class="pr"><h3>Privacidad de verdad</h3><p>Voto secreto, cédulas que se muestran incompletas y permisos que controla la base de datos, no la página.</p></div>
+        <div class="pr"><h3>Que funcione sin señal</h3><p>Apps instalables que siguen funcionando aunque el celular pierda internet en medio de la asamblea.</p></div>
+        <div class="pr"><h3>Fácil de entregar</h3><p>Cada repositorio trae guías como <code>PUBLICAR.md</code> o <code>ENTREGA.md</code> para que otra persona pueda mantenerlo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="herramientas">
+    <div class="wrap">
+      <div class="sec-head"><h2>Herramientas</h2></div>
+      <div class="stack">
+        <div class="st"><h3>Frontend</h3><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">PWA</span><span class="chip">Accesibilidad</span><span class="chip">Diseño responsivo</span></div></div>
+        <div class="st"><h3>Backend y datos</h3><div class="chips"><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Row Level Security</span><span class="chip">Node.js</span><span class="chip">Google Apps Script</span></div></div>
+        <div class="st"><h3>Móvil y publicación</h3><div class="chips"><span class="chip">Capacitor</span><span class="chip">Android</span><span class="chip">iOS</span><span class="chip">Vercel</span><span class="chip">Firebase</span><span class="chip">GitHub Pages</span><span class="chip">Git</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="contact" id="contacto">
+    <div class="wrap">
+      <p class="label" style="color:inherit; opacity:.8">Contacto</p>
+      <h2 style="margin-top:1rem">¿Tiene un proyecto que necesita gente real usándolo?</h2>
+      <p>Busco prácticas, proyectos y trabajo en desarrollo web. Escríbame y conversamos.</p>
+      <div class="cta">
+        <a class="btn solid" href="https://github.com/abigailavendano" target="_blank" rel="noopener">github.com/abigailavendano</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Abigail Avendaño</span><span>Hecho a mano con HTML, CSS y JavaScript.</span></div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, s=1, key='portafolio-escala';
+  try{ var g=parseFloat(localStorage.getItem(key)); if(g>=0.9&&g<=1.4){s=g} }catch(e){}
+  function apply(){ root.style.setProperty('--scale', s.toFixed(2)); try{localStorage.setItem(key,s)}catch(e){} }
+  apply();
+  document.getElementById('mas').addEventListener('click',function(){ s=Math.min(1.4,s+0.1); apply(); });
+  document.getElementById('menos').addEventListener('click',function(){ s=Math.max(0.9,s-0.1); apply(); });
+
+  var btns=[['v-si','Sí'],['v-no','No'],['v-ab','Abstención']], r=document.getElementById('receipt');
+  btns.forEach(function(b){
+    document.getElementById(b[0]).addEventListener('click',function(){
+      btns.forEach(function(o){ document.getElementById(o[0]).setAttribute('aria-pressed', o[0]===b[0]?'true':'false'); });
+      var code=Math.random().toString(36).slice(2,8).toUpperCase();
+      r.textContent='✓ Voto registrado · comprobante '+code;
+    });
+  });
+})();
+</script>
+</body>
+</html>
